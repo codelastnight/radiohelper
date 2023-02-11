@@ -25,6 +25,6 @@
 	$: errorState = oninputChange(searchInput);
 </script>
 
-<input type="text" bind:value={searchInput} placeholder="insert playlist link" />
+<input id="search" type="text" bind:value={searchInput} placeholder="insert playlist link" />
 
-<p>{messages[errorState]}</p>
+<label for="search">{messages[errorState]}</label>
