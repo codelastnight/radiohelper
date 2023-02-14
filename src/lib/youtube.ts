@@ -16,23 +16,15 @@ interface Thumbnails {
 	url: string;
 }
 
-/**
- *
- * @param playlistId
- * @returns
- */
-export async function getPlaylistDataById(playlistId: string) {
-	const fields = 'items(id,snippet)';
-	const url = `${apiBaseURL}/playlists?key=${apiKey}&fields=${fields}&maxResults=50&part=snippet&id=${playlistId}`;
-
-	return await fetch(url);
+export interface VideoSnippet {
+	localized: {
+		title: string;
+		description: string;
+	};
 }
 
 /**
  * get items in a yt playlist
- * @param playlistId
- * @param nextPageToken
- * @returns
  */
 export async function getPlaylistItemData(playlistId: string, nextPageToken = '') {
 	const fields =
@@ -40,6 +32,26 @@ export async function getPlaylistItemData(playlistId: string, nextPageToken = ''
 	const url = `${apiBaseURL}/playlistItems?key=${apiKey}&fields=${fields}&maxResults=50&part=snippet%2CcontentDetails&playlistId=${playlistId}&pageToken=${
 		nextPageToken || ''
 	}`;
+
+	return await fetch(url);
+}
+
+/**
+ * get yt video based on videoId
+ */
+export async function getVideoData(id: string): Promise<Response> {
+	const fields = 'items(snippet/localized(title,description))';
+	const url = `${apiBaseURL}/videos?key=${apiKey}&fields=${fields}&part=snippet%2CcontentDetails&id=${id}`;
+
+	return await fetch(url);
+}
+
+/**
+ * get yt video based on videoId
+ */
+export async function getVideoDuration(id: string): Promise<Response> {
+	const fields = 'items(contentDetails/duration)';
+	const url = `${apiBaseURL}/videos?key=${apiKey}&fields=${fields}&part=contentDetails&id=${id}`;
 
 	return await fetch(url);
 }

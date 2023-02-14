@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getPlaylistDataById, getPlaylistItemData } from '$lib/youtube';
+	import { getPlaylistItemData } from '$lib/youtube';
 	import type { PlaylistSnippet } from '$lib/youtube';
 	import PlaylistInput from '$lib/PlaylistInput.svelte';
 	import PlaylistItemDetails from '$lib/PlaylistItemDetails.svelte';
@@ -16,7 +16,6 @@
 		const response = await getPlaylistItemData(Id);
 		if (response.ok) {
 			const data = await response.json();
-			console.log(data);
 			return data;
 		} else {
 			throw new Error('error');

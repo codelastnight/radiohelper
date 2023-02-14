@@ -6,7 +6,8 @@
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
-		"deploy": "node ./gh-pages.js",
+		"deploy": "touch build/.nojekyll && gh-pages -d build -t true",
+		"wasm": "wasm-pack build ./kakasi --target web",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
@@ -39,6 +40,8 @@
 		"kuroshiro-analyzer-kuromoji": "^1.1.0",
 		"modern-normalize": "^1.1.0",
 		"rollup-plugin-node-polyfills": "^0.2.1",
+		"tinyduration": "^3.2.4",
+		"vite-plugin-wasm-pack": "^0.1.12",
 		"wanakana": "^5.0.2"
 	}
 }
