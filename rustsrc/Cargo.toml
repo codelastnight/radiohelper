@@ -1,0 +1,15 @@
+[package]
+name = "rustsrc"
+version = "0.1.0"
+edition = "2021"
+authors = ["last night"]
+description = "A sample project with wasm-pack"
+license = "MIT/Apache-2.0"
+repository = ""
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+kakasi = "0.1.0"
+wasm-bindgen = "0.2"

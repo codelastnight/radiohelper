@@ -36,8 +36,6 @@
 	"dependencies": {
 		"@esbuild-plugins/node-globals-polyfill": "^0.2.3",
 		"@esbuild-plugins/node-modules-polyfill": "^0.2.2",
-		"kuroshiro": "~1.1.2",
-		"kuroshiro-analyzer-kuromoji": "^1.1.0",
 		"modern-normalize": "^1.1.0",
 		"rollup-plugin-node-polyfills": "^0.2.1",
 		"tinyduration": "^3.2.4",

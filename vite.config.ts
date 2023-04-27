@@ -4,9 +4,7 @@ import type { UserConfig } from 'vite';
 import wasmPack from 'vite-plugin-wasm-pack';
 
 const config: UserConfig = {
-	resolve: {
-	
-	},
+	resolve: {},
 	optimizeDeps: {
 		// esbuildOptions: {
 		// 	// Node.js global to browser globalThis
@@ -24,9 +22,7 @@ const config: UserConfig = {
 		// }
 	},
 
-	plugins: [
-		sveltekit(),wasmPack('./kakasi')
-	]
+	plugins: [sveltekit(), wasmPack('./rustsrc')]
 };
 
 export default config;

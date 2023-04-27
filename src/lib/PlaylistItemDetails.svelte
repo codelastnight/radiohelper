@@ -3,27 +3,24 @@
 	import type { PlaylistSnippet, VideoSnippet } from './youtube';
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
+	import Translate from './Translate.svelte';
 	export let itemData: PlaylistSnippet;
 	let videoPromise: any;
 
 	$: if (itemData) videoPromise = getYoutubeData(itemData.resourceId.videoId);
-
 
 	async function getYoutubeData(videoId: string) {
 		if (!videoId) throw new Error('');
 		const response = await getVideoData(videoId);
 		if (response.ok) {
 			const data = await response.json();
-			console.log(data);
 			return data;
 		} else {
 			throw new Error('error');
 		}
 	}
 
-	onMount(async () => {
-	
-	});
+	onMount(async () => {});
 </script>
 
 {#if itemData}
@@ -36,11 +33,14 @@
 					<h3>{itemData.title}</h3>
 					<p>{itemData.videoOwnerChannelTitle}</p>
 				{:then data}
-					<h3>{data.items[0].snippet.localized.title}<span>{itemData.title}</span></h3>
-					<p>
-						{data.items[0].snippet.localized.description}<span
-							>{itemData.videoOwnerChannelTitle}</span
-						>
+					<h3>
+						{data.items[0].snippet.localized.title}
+					</h3>
+					<h3><span><Translate textString={itemData.title} /></span></h3>
+					<p>{itemData.videoOwnerChannelTitle}</p>
+					<p><span><Translate textString={itemData.videoOwnerChannelTitle} /></span></p>
+					<p style="max-width:40rem;">
+						{data.items[0].snippet.localized.description}<span />
 					</p>
 				{:catch error}
 					<h3>{itemData.title}</h3>

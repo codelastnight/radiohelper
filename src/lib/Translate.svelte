@@ -1,23 +1,23 @@
 <script lang="ts">
-	export let translateConstructor: any;
+	import init, { convert_romaji } from 'rustsrc';
 	export let textString: string;
-	let promise: any;
 
-	$: promise = translate(textString, translateConstructor);
+	let isInit = false;
 
-	async function translate(string: string, translateService: any) {
-		console.log(translateService);
-		if (!translateService) throw Error('poop');
-		if (!string) throw Error('empty string!');
-		const result = await translateService.convert(string, { to: 'romaji' });
+	$: text = translate(textString);
+
+	async function translate(string: string) {
+		await init();
+		if (!string) return ' ';
+		const result = convert_romaji(string);
 		return result;
 	}
 </script>
 
-{#await promise}
-	<p>translating...</p>
+{#await text}
+	...translating
 {:then data}
-	<p>{data}</p>
+	{data}
 {:catch e}
-	<p style="color:red">{e.message}</p>
+	{e.message}
 {/await}
