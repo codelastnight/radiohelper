@@ -21,8 +21,7 @@ const config: UserConfig = {
 		// 	]
 		// }
 	},
-
-	plugins: [sveltekit(), wasmPack('./rustsrc')]
+	plugins: [wasmPack('./rustsrc'), sveltekit()]
 };
 
 export default config;
