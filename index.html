@@ -5,21 +5,32 @@
 		<link rel="icon" href="/radiohelper/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-security-policy" content="">
-		<link rel="modulepreload" href="/radiohelper/_app/immutable/start-06672e66.js">
-		<link rel="modulepreload" href="/radiohelper/_app/immutable/chunks/index-bbf81450.js">
-		<link rel="modulepreload" href="/radiohelper/_app/immutable/chunks/singletons-4b022bae.js">
+		<link rel="modulepreload" href="/radiohelper/_app/immutable/entry/start.23a9fd59.js">
+		<link rel="modulepreload" href="/radiohelper/_app/immutable/chunks/index.dbe229c8.js">
+		<link rel="modulepreload" href="/radiohelper/_app/immutable/chunks/singletons.5a447506.js">
+		<link rel="modulepreload" href="/radiohelper/_app/immutable/chunks/paths.891c93e8.js">
+		<link rel="modulepreload" href="/radiohelper/_app/immutable/entry/app.00dd1824.js">
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">
-		<script type="module" data-sveltekit-hydrate="45h">
-			import { start } from "/radiohelper/_app/immutable/start-06672e66.js";
+			<script>
+				{
+					__sveltekit_vmtth9 = {
+						assets: "/radiohelper",
+						base: "/radiohelper",
+						env: {"PUBLIC_API_KEY":"AIzaSyAanMZGOi8u6GcVyErTz0xPGNcAngCs9Gk","PUBLIC_BASE_URL":"https://www.googleapis.com/youtube/v3"}
+					};
 
-			start({
-				env: {"PUBLIC_API_KEY":"AIzaSyAanMZGOi8u6GcVyErTz0xPGNcAngCs9Gk","PUBLIC_BASE_URL":"https://www.googleapis.com/youtube/v3"},
-				paths: {"assets":"/radiohelper","base":"/radiohelper"},
-				target: document.querySelector('[data-sveltekit-hydrate="45h"]').parentNode,
-				version: "1682716032466"
-			});
-		</script></div>
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("/radiohelper/_app/immutable/entry/start.23a9fd59.js"),
+						import("/radiohelper/_app/immutable/entry/app.00dd1824.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
 	</body>
 </html>
